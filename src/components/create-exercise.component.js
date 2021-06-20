@@ -17,14 +17,15 @@ export default class CreateExercise extends Component {
       username: "",
       description: "",
       duration: 0,
-      date: new Date(),
+      // date: new date(),
+      date: "2021_06_23",
       users: [],
     };
   }
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/users/")
+      .get("https://backendmernexercise.herokuapp.com/users/")
       .then((response) => {
         if (response.data.length > 0) {
           this.setState({
@@ -56,7 +57,7 @@ export default class CreateExercise extends Component {
     });
   }
 
-  onChangeDate(date ) {
+  onChangeDate(date) {
     this.setState({
       date: date,
     });
@@ -73,7 +74,7 @@ export default class CreateExercise extends Component {
 
     console.log(exercise);
     axios
-      .post("http://localhost:5000/exercises/add", exercise)
+      .post("https://backendmernexercise.herokuapp.com/add", exercise)
       .then((res) => console.log(res.data));
 
     window.location = "/";
